@@ -1,6 +1,6 @@
 /**
  *  @file
- *  @copyright defined in eos/LICENSE
+ *  @copyright defined in leopays/LICENSE
  */
 #pragma once
 #include "types.h"
@@ -15,7 +15,7 @@ extern "C" {
  * @brief Defines API for querying action and sending action
  *
  *
- * A EOS.IO action has the following abstract structure:
+ * A LeoPays action has the following abstract structure:
  *
  * ```
  *   struct action {
@@ -32,7 +32,7 @@ extern "C" {
  * @code
  * // Assume this action is used for the following examples:
  * // {
- * //  "code": "eos",
+ * //  "code": "lpc",
  * //  "type": "transfer",
  * //  "authorization": [{ "account": "inita", "permission": "active" }],
  * //  "data": {

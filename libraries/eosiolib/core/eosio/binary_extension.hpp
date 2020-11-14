@@ -206,4 +206,4 @@ namespace eosio {
 
    /// @endcond
 
-} // namespace eosio
+}

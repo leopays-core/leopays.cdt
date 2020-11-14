@@ -1,6 +1,6 @@
 /**
  *  @file
- *  @copyright defined in eos/LICENSE
+ *  @copyright defined in leopays/LICENSE
  */
 #pragma once
 
@@ -22,7 +22,7 @@ namespace eosio {
     * @defgroup name
     * @ingroup core
     * @ingroup types
-    * @brief EOSIO Name Type
+    * @brief LeoPays Name Type
     */
 
    /**
@@ -277,7 +277,7 @@ namespace eosio {
          static constexpr const char value[] = {Str...};
       };
    } /// namespace detail
-} /// namespace eosio
+}
 
 /// @cond IMPLEMENTATIONS
 

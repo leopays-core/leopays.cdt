@@ -228,4 +228,4 @@ namespace eosio {
             return {c_str(), size};
          }
    };
-} // ns eosio
+}

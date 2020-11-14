@@ -12,7 +12,7 @@ content_title: Troubleshooting
         "what":"Provided keys, permissions, and delays do not satisfy declared authorizations",
         "details":[
             {
-                "message":"transaction declares authority '{"actor":"account_name","permission":"permission_name"}', but does not have signatures for it under a provided delay of 0 ms, provided permissions [], provided keys ["EOS5ZcMvpgtDMdVtvCFewAQYTyfN6Vqhg4kdgauffx3jiaKaeWfY1"], and a delay max limit of 3888000000 ms",
+                "message":"transaction declares authority '{"actor":"account_name","permission":"permission_name"}', but does not have signatures for it under a provided delay of 0 ms, provided permissions [], provided keys ["LPC5ZcMvpgtDMdVtvCFewAQYTyfN6Vqhg4kdgauffx3jiaKaeWfY1"], and a delay max limit of 3888000000 ms",
                 "file":"authorization_manager.cpp",
                 "line_number":524,
                 "method":"check_authorization"
@@ -31,14 +31,14 @@ Unexpected input encountered while processing struct 'action_name_here'
 ```
 __Possible solution__: You did not specify correctly the parameter when sending the action to the blockchain. When no parameter is needed the command should look like the one below:
 ```sh
-cleos push action eostutorial1 get '[]' -p eostutorial1@active
+leopays-cli push action lpctutorial1 get '[]' -p lpctutorial1@active
 ```
 The command above is one way of sending correctly `get` action with no parameters to the blockchain.
 
 ## When sending an action to the blockchain an error similar to the one below is encountered:
 ```sh
 error 2019-09-25T07:38:14.859 thread-0  main.cpp:3449                 main                 ] Failed with error: Assert Exception (10)
-!action_type.empty(): Unknown action action_name in contract eostutorial1
+!action_type.empty(): Unknown action action_name in contract lpctutorial1
 ```
 __Possible solution__: Verify if the action attribute `[[eosio::action]]` is used when defining and/or declaring the action `action_name` for the contract.
 
@@ -48,7 +48,7 @@ Error 3160010: No abi file found
 or
 Error 3160009: No wasm file found
 ```
-__Possible solution__: Verify that `abi` and `wasm` files exist in the directory specified in the `cleos set contract` command, and that their names match the directory name.
+__Possible solution__: Verify that `abi` and `wasm` files exist in the directory specified in the `leopays-cli set contract` command, and that their names match the directory name.
 
 ## Action triggers ram charge which cannot be initiated from a notification.
 
@@ -74,13 +74,13 @@ Couldn't parse type_name
 ```
 __Possible solution__: It is possible that you changed the type of the fields for the table struct definition? If you need to change the table structure definition there are some limitations and a couple of ways to do it which are explained in the [Data Design and Migration](./05_best-practices/04_data-design-and-migration.md) section.
 
-## eosio-cpp process never completes.
+## leopays-cpp process never completes.
 
-__Possible solution__: make sure you have at least 2 cores on the host that executes the eosio-cpp (e.g. docker container, VM, local sub-system)
+__Possible solution__: make sure you have at least 2 cores on the host that executes the leopays-cpp (e.g. docker container, VM, local sub-system)
 
 ## You can not find the `now()` time function, or the result of the `current_time_point` functions are not what you expected them to be.
 
-__Possible solution__: The `now()` function has been replaced by `current_time_point().sec_since_epoch()`, it returns the time in microseconds from 1970 of the `current block` as a time_point. There's also available `current_block_time()` which returns the time in microseconds from 1970 of the `current block` as a `block_timestamp`. Be aware that for time base functions, the assumption is when you call something like `now()` or `current_time()` you will get the exact now/current time, however that is not the case with EOSIO, you get __the block time__, and only ever get __the block time__ from the available `sec_since_epoch()` or `current_block_time()` no matter how many times you call it.
+__Possible solution__: The `now()` function has been replaced by `current_time_point().sec_since_epoch()`, it returns the time in microseconds from 1970 of the `current block` as a time_point. There's also available `current_block_time()` which returns the time in microseconds from 1970 of the `current block` as a `block_timestamp`. Be aware that for time base functions, the assumption is when you call something like `now()` or `current_time()` you will get the exact now/current time, however that is not the case with LeoPays, you get __the block time__, and only ever get __the block time__ from the available `sec_since_epoch()` or `current_block_time()` no matter how many times you call it.
 
 ## You successfully re-deployed the contract code, but when you broadcast one of the contracts methods to the blockchain you get below error message:
 ```sh
@@ -115,7 +115,7 @@ The below code will print all lines of the iteration separated by `'|'` char.
 
 ## Print statements from smart contract code are not shown in the `expected order`.
 
-__Possible solution__: The key point here is the `expected order` and what you think it should be. Although the EOSIO is single threaded, when looking at your smart contract action code implementation, which let's say it has a series of `print` (either `print_f` or `printf`) statements, they might not necessarily be outputted in the order the `apparent` code workflow is. One example is when inline transactions are sent from your smart contract action code, and you expect to see the `print` statements from within the inline action code outputted before the `print` statements made after the inline action `send` statement. For better exemplification let's look at the code below:
+__Possible solution__: The key point here is the `expected order` and what you think it should be. Although the LeoPays is single threaded, when looking at your smart contract action code implementation, which let's say it has a series of `print` (either `print_f` or `printf`) statements, they might not necessarily be outputted in the order the `apparent` code workflow is. One example is when inline transactions are sent from your smart contract action code, and you expect to see the `print` statements from within the inline action code outputted before the `print` statements made after the inline action `send` statement. For better exemplification let's look at the code below:
 
 ```cpp
 [[eosio::action]] void multi_index_example::mod( name user, uint64_t n ) {
@@ -124,7 +124,7 @@ __Possible solution__: The key point here is the `expected order` and what you t
 
   print_f("Output line before the inline send action.")
 
-  singleton_set_action singleton_set("eostutorial1"_n, {get_self(), "active"_n});
+  singleton_set_action singleton_set("lpctutorial1"_n, {get_self(), "active"_n});
   singleton_set.send(get_self(), n, get_self());
 
   print_f("Output line after the inline send action.")

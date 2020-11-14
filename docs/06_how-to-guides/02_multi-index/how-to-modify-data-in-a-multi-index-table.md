@@ -38,4 +38,4 @@ To modify data in the multi index table defined in the above tutorial, you will 
 ```
 
 [[info | Full example location]
-| A full example project demonstrating the instantiation and usage of multi index table can be found [here](https://github.com/EOSIO/eosio.cdt/tree/master/examples/multi_index_example).
+| A full example project demonstrating the instantiation and usage of multi index table can be found [here](https://github.com/leopays-core/leopays.cdt/tree/master/examples/multi_index_example).

@@ -1,6 +1,6 @@
 /**
  *  @file
- *  @copyright defined in eos/LICENSE
+ *  @copyright defined in leopays/LICENSE
  */
 #pragma once
 #include "action.hpp"
@@ -25,5 +25,5 @@ static_assert( sizeof(long) == sizeof(int), "unexpected size difference" );
 
 /**
  * @defgroup types Types
- * @brief C++ Types API for data layout of data-structures available for the EOSIO platform
+ * @brief C++ Types API for data layout of data-structures available for the LeoPays platform
  */

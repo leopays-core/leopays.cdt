@@ -2,47 +2,47 @@
 content_title: Binary Releases
 ---
 
-EOSIO.CDT currently supports Mac OS X brew, Linux x86_64 Debian packages, and Linux x86_64 RPM packages.
+LeoPays.CDT currently supports Mac OS X brew, Linux x86_64 Debian packages, and Linux x86_64 RPM packages.
 
-**If you have previously installed EOSIO.CDT, run the `uninstall` script (it is in the directory where you cloned EOSIO.CDT) before downloading and using the binary releases.**
+**If you have previously installed LeoPays.CDT, run the `uninstall` script (it is in the directory where you cloned LeoPays.CDT) before downloading and using the binary releases.**
 
 ## Mac OS X Brew Install
 ```sh
-$ brew tap eosio/eosio.cdt
-$ brew install eosio.cdt
+$ brew tap leopays-core/leopays.cdt
+$ brew install leopays.cdt
 ```
 
 ## Mac OS X Brew Uninstall
 ```sh
-$ brew remove eosio.cdt
+$ brew remove leopays.cdt
 ```
 
 ## Debian Package Install
 ```sh
-$ wget https://github.com/eosio/eosio.cdt/releases/download/v1.6.3/eosio.cdt_1.6.3-1-ubuntu-18.04_amd64.deb
-$ sudo apt install ./eosio.cdt_1.6.3-1-ubuntu-18.04_amd64.deb
+$ wget https://github.com/leopays-core/leopays.cdt/releases/download/v0.1.0/leopays.cdt_0.1.0-1-ubuntu-18.04_amd64.deb
+$ sudo apt install ./leopays.cdt_0.1.0-1-ubuntu-18.04_amd64.deb
 ```
 
 ## Debian Package Uninstall
 ```sh
-$ sudo apt remove eosio.cdt
+$ sudo apt remove leopays.cdt
 ```
 
 ## RPM Package Install
 ```sh
-$ wget https://github.com/eosio/eosio.cdt/releases/download/v1.6.3/eosio.cdt-1.6.3-1.el7.x86_64.rpm
-$ sudo yum install ./eosio.cdt-1.6.3-1.el7.x86_64.rpm
+$ wget https://github.com/leopays-core/leopays.cdt/releases/download/v0.1.0/leopays.cdt-0.1.0-1.el7.x86_64.rpm
+$ sudo yum install ./leopays.cdt-0.1.0-1.el7.x86_64.rpm
 ```
 
 ## RPM Package Uninstall
 ```sh
-$ sudo yum remove eosio.cdt
+$ sudo yum remove leopays.cdt
 ```
 
 # Guided Installation or Building from Scratch
 ```sh
-$ git clone --recursive https://github.com/eosio/eosio.cdt
-$ cd eosio.cdt
+$ git clone --recursive https://github.com/leopays-core/leopays.cdt
+$ cd leopays.cdt
 $ mkdir build
 $ cd build
 $ cmake ..
@@ -59,32 +59,32 @@ sudo make install
 ## Uninstall after manual installation
 
 ```sh
-$ sudo rm -fr /usr/local/eosio.cdt
-$ sudo rm -fr /usr/local/lib/cmake/eosio.cdt
-$ sudo rm /usr/local/bin/eosio-*
+$ sudo rm -fr /usr/local/leopays.cdt
+$ sudo rm -fr /usr/local/lib/cmake/leopays.cdt
+$ sudo rm /usr/local/bin/leopays-*
 ```
 
 
 # Installed Tools
 
-* eosio-cpp
-* eosio-cc
-* eosio-ld
-* eosio-init
-* eosio-abidiff
-* eosio-wasm2wast
-* eosio-wast2wasm
-* eosio-ranlib
-* eosio-ar
-* eosio-objdump
-* eosio-readelf
+* leopays-cpp
+* leopays-cc
+* leopays-ld
+* leopays-init
+* leopays-abidiff
+* leopays-wasm2wast
+* leopays-wast2wasm
+* leopays-ranlib
+* leopays-ar
+* leopays-objdump
+* leopays-readelf
 
 Below tools are not installed after brew install, you get them only by building the repository and installing from scracth, [see here](#guided_installation_or_building_from_scratch)
-eosio-abidiff
-eosio-ranlib
-eosio-ar
-eosio-objdump
-eosio-readelf
+leopays-abidiff
+leopays-ranlib
+leopays-ar
+leopays-objdump
+leopays-readelf
 
 
 License

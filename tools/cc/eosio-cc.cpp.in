@@ -14,7 +14,7 @@
 using namespace clang::tooling;
 using namespace llvm;
 
-#define COMPILER_NAME "eosio-cc"
+#define COMPILER_NAME "leopays-cc"
 #include <compiler_options.hpp>
 
 int main(int argc, const char **argv) {
@@ -30,11 +30,11 @@ int main(int argc, const char **argv) {
    cl::SetVersionPrinter([](llvm::raw_ostream& os) {
          os << COMPILER_NAME << " version " << "${VERSION_FULL}" << "\n";
    });
-   cl::ParseCommandLineOptions(argc, argv, std::string(COMPILER_NAME)+" (Eosio C -> WebAssembly compiler)");
+   cl::ParseCommandLineOptions(argc, argv, std::string(COMPILER_NAME)+" (LeoPays C -> WebAssembly compiler)");
    Options opts = CreateOptions();
 
    if (opts.abigen) {
-       llvm::outs() << "Warning, ABI generation is only available with eosio-abigen or eosio-cpp\n";
+       llvm::outs() << "Warning, ABI generation is only available with leopays-abigen or leopays-cpp\n";
    }
    
    std::vector<std::string> outputs;
@@ -73,7 +73,7 @@ int main(int argc, const char **argv) {
       for (auto input : outputs) {
          new_opts.insert(new_opts.begin(), std::string(" ")+input+" ");
       }
-      if (!eosio::cdt::environment::exec_subprogram("eosio-ld", new_opts)) {
+      if (!eosio::cdt::environment::exec_subprogram("leopays-ld", new_opts)) {
          for (auto input : outputs) {
             llvm::sys::fs::remove(input);
          }

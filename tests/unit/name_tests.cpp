@@ -1,6 +1,6 @@
 /**
  *  @file
- *  @copyright defined in eosio.cdt/LICENSE.txt
+ *  @copyright defined in leopays.cdt/LICENSE.txt
  */
 
 #include <limits>
@@ -17,7 +17,7 @@ using eosio::name;
 static constexpr uint64_t u64min = numeric_limits<uint64_t>::min(); // 0ULL
 static constexpr uint64_t u64max = numeric_limits<uint64_t>::max(); // 18446744073709551615ULL
 
-// Definitions in `eosio.cdt/libraries/eosio/name.hpp`
+// Definitions in `leopays.cdt/libraries/eosio/name.hpp`
 EOSIO_TEST_BEGIN(name_type_test)
    //// constexpr name()
    CHECK_EQUAL( name{}.value, 0ULL )
@@ -96,39 +96,39 @@ EOSIO_TEST_BEGIN(name_type_test)
    // -------------------------------
    // constexpr uint8_t length()cosnt
    CHECK_EQUAL( name{""}.length(), 0 )
-   CHECK_EQUAL( name{"e"}.length(), 1 )
-   CHECK_EQUAL( name{"eo"}.length(), 2 )
-   CHECK_EQUAL( name{"eos"}.length(), 3 )
-   CHECK_EQUAL( name{"eosi"}.length(), 4 )
-   CHECK_EQUAL( name{"eosio"}.length(), 5 )
-   CHECK_EQUAL( name{"eosioa"}.length(), 6 )
-   CHECK_EQUAL( name{"eosioac"}.length(), 7 )
-   CHECK_EQUAL( name{"eosioacc"}.length(), 8 )
-   CHECK_EQUAL( name{"eosioacco"}.length(), 9 )
-   CHECK_EQUAL( name{"eosioaccou"}.length(), 10 )
-   CHECK_EQUAL( name{"eosioaccoun"}.length(), 11 )
-   CHECK_EQUAL( name{"eosioaccount"}.length(), 12 )
-   CHECK_EQUAL( name{"eosioaccountj"}.length(), 13 )
+   CHECK_EQUAL( name{"a"}.length(), 1 )
+   CHECK_EQUAL( name{"aa"}.length(), 2 )
+   CHECK_EQUAL( name{"aaa"}.length(), 3 )
+   CHECK_EQUAL( name{"aaaa"}.length(), 4 )
+   CHECK_EQUAL( name{"aaaaa"}.length(), 5 )
+   CHECK_EQUAL( name{"aaaaaa"}.length(), 6 )
+   CHECK_EQUAL( name{"aaaaaac"}.length(), 7 )
+   CHECK_EQUAL( name{"aaaaaacc"}.length(), 8 )
+   CHECK_EQUAL( name{"aaaaaacco"}.length(), 9 )
+   CHECK_EQUAL( name{"aaaaaaccou"}.length(), 10 )
+   CHECK_EQUAL( name{"aaaaaaccoun"}.length(), 11 )
+   CHECK_EQUAL( name{"aaaaaaccount"}.length(), 12 )
+   CHECK_EQUAL( name{"aaaaaaccountj"}.length(), 13 )
 
    CHECK_ASSERT( "string is too long to be a valid name", ([]() {name{"12345abcdefghj"}.length();}) )
 
    // ----------------------------
    // constexpr name suffix()const
-   CHECK_EQUAL( name{".eosioaccounj"}.suffix(), name{"eosioaccounj"} )
-   CHECK_EQUAL( name{"e.osioaccounj"}.suffix(), name{"osioaccounj"} )
-   CHECK_EQUAL( name{"eo.sioaccounj"}.suffix(), name{"sioaccounj"} )
-   CHECK_EQUAL( name{"eos.ioaccounj"}.suffix(), name{"ioaccounj"} )
-   CHECK_EQUAL( name{"eosi.oaccounj"}.suffix(), name{"oaccounj"} )
-   CHECK_EQUAL( name{"eosio.accounj"}.suffix(), name{"accounj"} )
-   CHECK_EQUAL( name{"eosioa.ccounj"}.suffix(), name{"ccounj"} )
-   CHECK_EQUAL( name{"eosioac.counj"}.suffix(), name{"counj"} )
-   CHECK_EQUAL( name{"eosioacc.ounj"}.suffix(), name{"ounj"} )
-   CHECK_EQUAL( name{"eosioacco.unj"}.suffix(), name{"unj"} )
-   CHECK_EQUAL( name{"eosioaccou.nj"}.suffix(), name{"nj"} )
-   CHECK_EQUAL( name{"eosioaccoun.j"}.suffix(), name{"j"} )
+   CHECK_EQUAL( name{".aaaaaoaccounj"}.suffix(), name{"aaaaaaccounj"} )
+   CHECK_EQUAL( name{"a.aaaoaccounj"}.suffix(), name{"aaaaaccounj"} )
+   CHECK_EQUAL( name{"aa.aaoaccounj"}.suffix(), name{"aaaaccounj"} )
+   CHECK_EQUAL( name{"aaa.aoaccounj"}.suffix(), name{"aaaccounj"} )
+   CHECK_EQUAL( name{"aaaa.aaccounj"}.suffix(), name{"aaccounj"} )
+   CHECK_EQUAL( name{"aaaaa.accounj"}.suffix(), name{"accounj"} )
+   CHECK_EQUAL( name{"aaaaaa.ccounj"}.suffix(), name{"ccounj"} )
+   CHECK_EQUAL( name{"aaaaaac.counj"}.suffix(), name{"counj"} )
+   CHECK_EQUAL( name{"aaaaaacc.ounj"}.suffix(), name{"ounj"} )
+   CHECK_EQUAL( name{"aaaaaacco.unj"}.suffix(), name{"unj"} )
+   CHECK_EQUAL( name{"aaaaaaccou.nj"}.suffix(), name{"nj"} )
+   CHECK_EQUAL( name{"aaaaaaccoun.j"}.suffix(), name{"j"} )
 
-   CHECK_EQUAL( name{"e.o.s.i.o.a.c"}.suffix(), name{"c"} )
-   CHECK_EQUAL( name{"eos.ioa.cco"}.suffix(), name{"cco"} )
+   CHECK_EQUAL( name{"a.a.a.a.a.a.c"}.suffix(), name{"c"} )
+   CHECK_EQUAL( name{"aaa.ioa.cco"}.suffix(), name{"cco"} )
 
    // -----------------------------
    // constexpr operator raw()const

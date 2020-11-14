@@ -178,4 +178,4 @@ intrinsic_macro(get_sender)
    create_function<eosio::native::intrinsics::__ ## name ## _types::res_t, \
          eosio::native::intrinsics::__ ## name ## _types::deduced_full_ts>(eosio::native::intrinsics::__ ## name ## _types::is),
 
-}} //ns eosio::native
+}}

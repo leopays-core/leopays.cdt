@@ -8,7 +8,7 @@
  * @defgroup contract Contract
  * @ingroup contracts
  * @ingroup types
- * @brief Defines contract type which is %base class for every EOSIO contract
+ * @brief Defines contract type which is %base class for every LeoPays contract
  */
 
 /**
@@ -22,7 +22,7 @@
 namespace eosio {
 
 /**
- * %Base class for EOSIO contract.
+ * %Base class for LeoPays contract.
  *
  * @ingroup contract
  * @details %A new contract should derive from this class, so it can make use of EOSIO_ABI macro.

@@ -1,6 +1,6 @@
 /**
  *  @file
- *  @copyright defined in eos/LICENSE
+ *  @copyright defined in leopays/LICENSE
  */
 #include "core/eosio/crypto.hpp"
 #include "core/eosio/datastream.hpp"

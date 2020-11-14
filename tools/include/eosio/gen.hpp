@@ -589,4 +589,4 @@ struct generation_utils {
       return get_base_type_name(t).compare(get_type_alias_string(t)) != 0;
    }
 };
-}} // ns eosio::cdt
+}}

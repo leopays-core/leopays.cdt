@@ -1,0 +1,1 @@
+add_llvm_loadable_module(leopays_plugin eosio_autogen.cpp PLUGIN_TOOL clang)

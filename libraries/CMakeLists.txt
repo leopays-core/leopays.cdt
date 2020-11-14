@@ -8,8 +8,8 @@ if (CCACHE_FOUND)
     set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
 endif()
 
-list(APPEND CMAKE_MODULE_PATH ${EOSIO_CDT_BIN})
-include(EosioCDTMacros)
+list(APPEND CMAKE_MODULE_PATH ${LEOPAYS_CDT_BIN})
+include(LeoPaysCDTMacros)
 
 set(CMAKE_C_FLAGS " ${CMAKE_C_FLAGS} -O3 -Wall ")
 set(CMAKE_CXX_FLAGS " ${CMAKE_CXX_FLAGS} -O3 -Wall ")

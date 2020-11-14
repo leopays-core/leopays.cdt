@@ -39,7 +39,7 @@ set_property(TEST time_tests PROPERTY LABELS unit_tests)
 add_test( varint_tests ${CMAKE_BINARY_DIR}/tests/unit/varint_tests )
 set_property(TEST varint_tests PROPERTY LABELS unit_tests)
 
-if (eosio_FOUND AND EOSIO_RUN_INTEGRATION_TESTS)
+if (leopays_FOUND AND LEOPAYS_RUN_INTEGRATION_TESTS)
    add_test(integration_tests ${CMAKE_BINARY_DIR}/tests/integration/integration_tests)
    set_property(TEST integration_tests PROPERTY LABELS integration_tests)
 endif()

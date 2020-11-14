@@ -1,6 +1,6 @@
 /**
  *  @file db.h
- *  @copyright defined in eos/LICENSE
+ *  @copyright defined in leopays/LICENSE
  *  @brief Defines C API for interfacing with blockchain database
  */
 #pragma once
@@ -14,7 +14,7 @@ extern "C" {
  *  @addtogroup database_c_api Database C API
  *  @ingroup c_api
  *  @brief Defines %C APIs for interfacing with the database.
- *  @details Database C API provides low level interface to EOSIO database.
+ *  @details Database C API provides low level interface to LeoPays database.
  *
  *  @section tabletypes Supported Table Types
  *  Following are the table types supported by the C API:

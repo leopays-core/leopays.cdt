@@ -1,24 +1,24 @@
 cmake_minimum_required( VERSION 3.5 )
 
-set(EOSIO_VERSION_MIN "1.4")
-set(EOSIO_VERSION_SOFT_MAX "1.4")
-#set(EOSIO_VERSION_HARD_MAX "")
+set(LEOPAYS_VERSION_MIN "0.1")
+set(LEOPAYS_VERSION_SOFT_MAX "0.1")
+#set(LEOPAYS_VERSION_HARD_MAX "")
 
-find_package(eosio)
+find_package(leopays)
 
-### Check the version of eosio
+### Check the version of LeoPays
 set(VERSION_MATCH_ERROR_MSG "")
-EOSIO_CHECK_VERSION(VERSION_OUTPUT "${EOSIO_VERSION}"
-                                   "${EOSIO_VERSION_MIN}"
-                                   "${EOSIO_VERSION_SOFT_MAX}"
-                                   "${EOSIO_VERSION_HARD_MAX}"
+LEOPAYS_CHECK_VERSION(VERSION_OUTPUT "${LEOPAYS_VERSION}"
+                                   "${LEOPAYS_VERSION_MIN}"
+                                   "${LEOPAYS_VERSION_SOFT_MAX}"
+                                   "${LEOPAYS_VERSION_HARD_MAX}"
                                    VERSION_MATCH_ERROR_MSG)
 if(VERSION_OUTPUT STREQUAL "MATCH")
-   message(STATUS "Using eosio version ${EOSIO_VERSION}")
+   message(STATUS "Using LeoPays version ${LEOPAYS_VERSION}")
 elseif(VERSION_OUTPUT STREQUAL "WARN")
-   message(WARNING "Using eosio version ${EOSIO_VERSION} even though it exceeds the maximum supported version of ${EOSIO_VERSION_SOFT_MAX}; continuing with configuration, however build may fail.\nIt is recommended to use eosio version ${EOSIO_VERSION_SOFT_MAX}.x")
+   message(WARNING "Using LeoPays version ${LEOPAYS_VERSION} even though it exceeds the maximum supported version of ${LEOPAYS_VERSION_SOFT_MAX}; continuing with configuration, however build may fail.\nIt is recommended to use LeoPays version ${LEOPAYS_VERSION_SOFT_MAX}.x")
 else() # INVALID OR MISMATCH
-   message(FATAL_ERROR "Found eosio version ${EOSIO_VERSION} but it does not satisfy version requirements: ${VERSION_MATCH_ERROR_MSG}\nPlease use eosio version ${EOSIO_VERSION_SOFT_MAX}.x")
+   message(FATAL_ERROR "Found LeoPays version ${LEOPAYS_VERSION} but it does not satisfy version requirements: ${VERSION_MATCH_ERROR_MSG}\nPlease use LeoPays version ${LEOPAYS_VERSION_SOFT_MAX}.x")
 endif(VERSION_OUTPUT STREQUAL "MATCH")
 
 
@@ -30,4 +30,4 @@ include_directories(${CMAKE_BINARY_DIR})
 
 file(GLOB INT_TESTS "*.cpp" "*.hpp")
 
-add_eosio_test( integration_tests ${INT_TESTS} )
+add_leopays_test( integration_tests ${INT_TESTS} )

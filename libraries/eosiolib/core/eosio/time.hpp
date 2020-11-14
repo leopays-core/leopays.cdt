@@ -208,4 +208,4 @@ namespace eosio {
     */
    typedef block_timestamp block_timestamp_type;
 
-} // namespace eosio
+}

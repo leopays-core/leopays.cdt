@@ -18,15 +18,15 @@ cp -R ${BUILD_DIR}/bin/* ${CDT_PREFIX}/bin || exit 1
 cp -R ${BUILD_DIR}/licenses/* ${CDT_PREFIX}/licenses || exit 1
 
 # install cmake modules
-sed "s/_PREFIX_/\/${SPREFIX}/g" ${BUILD_DIR}/modules/EosioCDTMacrosPackage.cmake &> ${CDT_PREFIX}/lib/cmake/${PROJECT}/EosioCDTMacros.cmake || exit 1
-sed "s/_PREFIX_/\/${SPREFIX}/g" ${BUILD_DIR}/modules/EosioWasmToolchainPackage.cmake &> ${CDT_PREFIX}/lib/cmake/${PROJECT}/EosioWasmToolchain.cmake || exit 1
+sed "s/_PREFIX_/\/${SPREFIX}/g" ${BUILD_DIR}/modules/LeoPaysCDTMacrosPackage.cmake &> ${CDT_PREFIX}/lib/cmake/${PROJECT}/LeoPaysCDTMacros.cmake || exit 1
+sed "s/_PREFIX_/\/${SPREFIX}/g" ${BUILD_DIR}/modules/LeoPaysWasmToolchainPackage.cmake &> ${CDT_PREFIX}/lib/cmake/${PROJECT}/LeoPaysWasmToolchain.cmake || exit 1
 sed "s/_PREFIX_/\/${SPREFIX}\/${SSUBPREFIX}/g" ${BUILD_DIR}/modules/${PROJECT}-config.cmake.package &> ${CDT_PREFIX}/lib/cmake/${PROJECT}/${PROJECT}-config.cmake || exit 1
 
 # install scripts
 cp -R ${BUILD_DIR}/scripts/* ${CDT_PREFIX}/scripts  || exit 1
 
 # install misc.
-cp ${BUILD_DIR}/eosio.imports ${CDT_PREFIX} || exit 1
+cp ${BUILD_DIR}/leopays.imports ${CDT_PREFIX} || exit 1
 
 # install wasm includes
 cp -R ${BUILD_DIR}/include/* ${CDT_PREFIX}/include || exit 1
@@ -37,23 +37,23 @@ cp ${BUILD_DIR}/lib/*.a ${CDT_PREFIX}/lib || exit 1
 # make symlinks
 pushd ${PREFIX}/lib/cmake/${PROJECT} &> /dev/null
 ln -sf ../../../${SUBPREFIX}/lib/cmake/${PROJECT}/${PROJECT}-config.cmake ${PROJECT}-config.cmake || exit 1
-ln -sf ../../../${SUBPREFIX}/lib/cmake/${PROJECT}/EosioWasmToolchain.cmake EosioWasmToolchain.cmake || exit 1
-ln -sf ../../../${SUBPREFIX}/lib/cmake/${PROJECT}/EosioCDTMacros.cmake EosioCDTMacros.cmake || exit 1
+ln -sf ../../../${SUBPREFIX}/lib/cmake/${PROJECT}/LeoPaysWasmToolchain.cmake LeoPaysWasmToolchain.cmake || exit 1
+ln -sf ../../../${SUBPREFIX}/lib/cmake/${PROJECT}/LeoPaysCDTMacros.cmake LeoPaysCDTMacros.cmake || exit 1
 popd &> /dev/null
 
 create_symlink() {
    ln -sf ../${SUBPREFIX}/bin/$1 ${PREFIX}/bin/$2 || exit 1
 }
 
-create_symlink eosio-cc eosio-cc
-create_symlink eosio-cpp eosio-cpp
-create_symlink eosio-ld eosio-ld
-create_symlink eosio-pp eosio-pp
-create_symlink eosio-init eosio-init
-create_symlink eosio-abigen eosio-abigen
-create_symlink eosio-wasm2wast eosio-wasm2wast
-create_symlink eosio-wast2wasm eosio-wast2wasm
-create_symlink eosio-ar eosio-ar
+create_symlink leopays-cc leopays-cc
+create_symlink leopays-cpp leopays-cpp
+create_symlink leopays-ld leopays-ld
+create_symlink leopays-pp leopays-pp
+create_symlink leopays-init leopays-init
+create_symlink leopays-abigen leopays-abigen
+create_symlink leopays-wasm2wast leopays-wasm2wast
+create_symlink leopays-wast2wasm leopays-wast2wasm
+create_symlink leopays-ar leopays-ar
 
 echo "Generating Tarball $NAME.tar.gz..."
 tar -cvzf $NAME.tar.gz ./${PREFIX}/* || exit 1

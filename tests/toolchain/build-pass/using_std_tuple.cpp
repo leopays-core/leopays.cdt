@@ -1,6 +1,5 @@
 /*
- * Regression test for https://github.com/EOSIO/eosio.cdt/issues/558
- *
+ * Regression test
  * Verifies that a class/function can be used from the std namespace
  */
 

@@ -57,4 +57,4 @@ struct whereami {
    }
 };
 
-}} // ns eosio::cdt
+}}

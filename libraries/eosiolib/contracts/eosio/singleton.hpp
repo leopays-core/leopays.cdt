@@ -7,7 +7,7 @@ namespace  eosio {
    /**
     *  @defgroup singleton Singleton Table
     *  @ingroup contracts
-    *  @brief Defines EOSIO Singleton Table used with %multiindex
+    *  @brief Defines LeoPays Singleton Table used with %multiindex
     */
 
    /**
@@ -130,4 +130,4 @@ namespace  eosio {
       private:
          table _t;
    };
-} /// namespace eosio
+}

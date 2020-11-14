@@ -148,4 +148,4 @@ struct environment {
    }
 
 };
-}} // ns eosio::cdt
+}}

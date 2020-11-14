@@ -155,4 +155,4 @@ namespace eosio {
       return actual_end;
    }
 
-} // namespace eosio
+}

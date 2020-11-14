@@ -41,4 +41,4 @@ namespace eosio { namespace native {
          }
    };
 
-}} //ns eosio::native
+}}

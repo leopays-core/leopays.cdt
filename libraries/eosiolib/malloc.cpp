@@ -522,7 +522,7 @@ namespace eosio {
    };
    
    memory_manager memory_heap;
-} /// namespace eosio
+}
 
 extern "C" {
 void* malloc(size_t size) {

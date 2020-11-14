@@ -1,6 +1,6 @@
 /**
  *  @file
- *  @copyright defined in eos/LICENSE
+ *  @copyright defined in leopays/LICENSE
  */
 #pragma once
 
@@ -333,10 +333,10 @@ namespace _multi_index_detail {
 }
 
 /**
- *  The indexed_by struct is used to instantiate the indices for the Multi-Index table. In EOSIO, up to 16 secondary indices can be specified.
+ *  The indexed_by struct is used to instantiate the indices for the Multi-Index table. In LeoPays, up to 16 secondary indices can be specified.
  *
  *  @ingroup multiindex
- *  @tparam IndexName - is the name of the index. The name must be provided as an EOSIO base32 encoded 64-bit integer and must conform to the EOSIO naming requirements of a maximum of 13 characters, the first twelve from the lowercase characters a-z, digits 1-5, and ".", and if there is a 13th character, it is restricted to lowercase characters a-p and ".".
+ *  @tparam IndexName - is the name of the index. The name must be provided as an LeoPays base32 encoded 64-bit integer and must conform to the LeoPays naming requirements of a maximum of 13 characters, the first twelve from the lowercase characters a-z, digits 1-5, and ".", and if there is a 13th character, it is restricted to lowercase characters a-p and ".".
  *  @tparam Extractor - is a function call operator that takes a const reference to the table object type and returns either a secondary key type or a reference to a secondary key type. It is recommended to use the `eosio::const_mem_fun` template, which is a type alias to the `boost::multi_index::const_mem_fun`. See the documentation for the Boost `const_mem_fun` key extractor for more details.
  *
  *  Example:
@@ -374,11 +374,11 @@ struct indexed_by {
  *  @defgroup multiindex Multi Index Table
  *  @ingroup contracts
  *
- *  @brief Defines EOSIO Multi Index Table
- *  @details EOSIO Multi-Index API provides a C++ interface to the EOSIO database. It is patterned after Boost Multi Index Container.
- *  EOSIO Multi-Index table requires exactly a uint64_t primary key. For the table to be able to retrieve the primary key,
+ *  @brief Defines LeoPays Multi Index Table
+ *  @details LeoPays Multi-Index API provides a C++ interface to the LeoPays database. It is patterned after Boost Multi Index Container.
+ *  LeoPays Multi-Index table requires exactly a uint64_t primary key. For the table to be able to retrieve the primary key,
  *  the object stored inside the table is required to have a const member function called primary_key() that returns uint64_t.
- *  EOSIO Multi-Index table also supports up to 16 secondary indices. The type of the secondary indices could be any of:
+ *  LeoPays Multi-Index table also supports up to 16 secondary indices. The type of the secondary indices could be any of:
  *  - uint64_t
  *  - uint128_t
  *  - double
@@ -1077,7 +1077,7 @@ class multi_index
        *          address.account_name = "brendan"_n;
        *          address.first_name = "Brendan";
        *          address.last_name = "Blumer";
-       *          address.street = "1 EOS Way";
+       *          address.street = "1 LeoPays Way";
        *          address.city = "Hong Kong";
        *          address.state = "HK";
        *        });
@@ -1112,7 +1112,7 @@ class multi_index
        *          address.account_name = "brendan"_n;
        *          address.first_name = "Brendan";
        *          address.last_name = "Blumer";
-       *          address.street = "1 EOS Way";
+       *          address.street = "1 LeoPays Way";
        *          address.city = "Hong Kong";
        *          address.state = "HK";
        *        });
@@ -1147,7 +1147,7 @@ class multi_index
        *          address.account_name = "brendan"_n;
        *          address.first_name = "Brendan";
        *          address.last_name = "Blumer";
-       *          address.street = "1 EOS Way";
+       *          address.street = "1 LeoPays Way";
        *          address.city = "Hong Kong";
        *          address.state = "HK";
        *        });
@@ -1183,7 +1183,7 @@ class multi_index
        *          address.account_name = "brendan"_n;
        *          address.first_name = "Brendan";
        *          address.last_name = "Blumer";
-       *          address.street = "1 EOS Way";
+       *          address.street = "1 LeoPays Way";
        *          address.city = "Hong Kong";
        *          address.state = "HK";
        *        });
@@ -1220,7 +1220,7 @@ class multi_index
        *          address.account_name = "brendan"_n;
        *          address.first_name = "Brendan";
        *          address.last_name = "Blumer";
-       *          address.street = "1 EOS Way";
+       *          address.street = "1 LeoPays Way";
        *          address.city = "Hong Kong";
        *          address.state = "HK";
        *          address.zip = 93445;
@@ -1266,7 +1266,7 @@ class multi_index
        *          address.account_name = "brendan"_n;
        *          address.first_name = "Brendan";
        *          address.last_name = "Blumer";
-       *          address.street = "1 EOS Way";
+       *          address.street = "1 LeoPays Way";
        *          address.city = "Hong Kong";
        *          address.state = "HK";
        *          address.zip = 93445;
@@ -1311,7 +1311,7 @@ class multi_index
        *          address.key = addresses.available_primary_key();
        *          address.first_name = "Daniel";
        *          address.last_name = "Larimer";
-       *          address.street = "1 EOS Way";
+       *          address.street = "1 LeoPays Way";
        *          address.city = "Blacksburg";
        *          address.state = "VA";
        *        });
@@ -1415,7 +1415,7 @@ class multi_index
        *          address.account_name = "brendan"_n;
        *          address.first_name = "Brendan";
        *          address.last_name = "Blumer";
-       *          address.street = "1 EOS Way";
+       *          address.street = "1 LeoPays Way";
        *          address.city = "Hong Kong";
        *          address.state = "HK";
        *          address.zip = 93445;
@@ -1466,7 +1466,7 @@ class multi_index
        *          address.account_name = "brendan"_n;
        *          address.first_name = "Brendan";
        *          address.last_name = "Blumer";
-       *          address.street = "1 EOS Way";
+       *          address.street = "1 LeoPays Way";
        *          address.city = "Hong Kong";
        *          address.state = "HK";
        *          address.zip = 93445;
@@ -1512,7 +1512,7 @@ class multi_index
        *          address.account_name = "dan"_n;
        *          address.first_name = "Daniel";
        *          address.last_name = "Larimer";
-       *          address.street = "1 EOS Way";
+       *          address.street = "1 LeoPays Way";
        *          address.city = "Blacksburg";
        *          address.state = "VA";
        *        });
@@ -1912,4 +1912,4 @@ class multi_index
       }
 
 };
-}  /// eosio
+}

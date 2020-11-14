@@ -27,7 +27,7 @@ using namespace clang::tooling;
 using namespace llvm;
 
 #define CPP_COMP 1
-#define COMPILER_NAME "eosio-cpp"
+#define COMPILER_NAME "leopays-cpp"
 #include <compiler_options.hpp>
 
 #include <set>
@@ -105,11 +105,11 @@ namespace eosio { namespace cdt {
             }
          }
    };
-}} // ns eosio::cdt
+}}
 
 void generate(const std::vector<std::string>& base_options, std::string input, std::string contract_name, const std::vector<std::string>& resource_paths, bool abigen) {
    std::vector<std::string> options;
-   options.push_back("eosio-cpp");
+   options.push_back("leopays-cpp");
    options.push_back(input); // don't remove oddity of CommonOptionsParser?
    options.push_back(input);
    options.push_back("--");
@@ -171,7 +171,7 @@ int main(int argc, const char **argv) {
    cl::SetVersionPrinter([](llvm::raw_ostream& os) {
          os << COMPILER_NAME << " version " << "${VERSION_FULL}" << "\n";
    });
-   cl::ParseCommandLineOptions(argc, argv, std::string(COMPILER_NAME)+" (Eosio C++ -> WebAssembly compiler)");
+   cl::ParseCommandLineOptions(argc, argv, std::string(COMPILER_NAME)+" (LeoPays C++ -> WebAssembly compiler)");
    Options opts = CreateOptions();
 
    std::vector<std::string> outputs;
@@ -224,7 +224,7 @@ int main(int argc, const char **argv) {
          new_opts.insert(new_opts.begin(), std::string(" ")+input+" ");
       }
    
-      if (!eosio::cdt::environment::exec_subprogram("eosio-ld", new_opts)) {
+      if (!eosio::cdt::environment::exec_subprogram("leopays-ld", new_opts)) {
          for (auto input : outputs) {
             llvm::sys::fs::remove(input);
          }

@@ -24,7 +24,7 @@ using jsoncons::ojson;
 namespace eosio { namespace cdt {
    struct abigen_exception : public std::exception {
       virtual const char* what() const throw() {
-         return "eosio.abigen fatal error";
+         return "leopays.abigen fatal error";
       }
    };
    extern abigen_exception abigen_ex;
@@ -60,7 +60,7 @@ namespace eosio { namespace cdt {
             try {
                validate_name( decl->getName().str(), error_handler );
             } catch (...) {
-               std::cout << "Error, name <" <<decl->getName().str() << "> is an invalid EOSIO name.\n";
+               std::cout << "Error, name <" <<decl->getName().str() << "> is an invalid LeoPays name.\n";
                throw;
             }
             ret.name = decl->getName().str();
@@ -69,7 +69,7 @@ namespace eosio { namespace cdt {
             try {
                validate_name( action_name.str(), error_handler );
             } catch (...) {
-               std::cout << "Error, name <" << action_name.str() << "> is an invalid EOSIO name.\n";
+               std::cout << "Error, name <" << action_name.str() << "> is an invalid LeoPays name.\n";
                throw;
             }
             ret.name = action_name.str();
@@ -92,7 +92,7 @@ namespace eosio { namespace cdt {
             try {
                validate_name( decl->getNameAsString(), error_handler );
             } catch (...) {
-               std::cout << "Error, name <" <<decl->getNameAsString() << "> is an invalid EOSIO name.\n";
+               std::cout << "Error, name <" <<decl->getNameAsString() << "> is an invalid LeoPays name.\n";
             }
             ret.name = decl->getNameAsString();
          }
@@ -100,7 +100,7 @@ namespace eosio { namespace cdt {
             try {
                validate_name( action_name.str(), error_handler );
             } catch (...) {
-               std::cout << "Error, name <" << action_name.str() << "> is an invalid EOSIO name.\n";
+               std::cout << "Error, name <" << action_name.str() << "> is an invalid LeoPays name.\n";
             }
             ret.name = action_name.str();
          }
@@ -275,7 +275,7 @@ namespace eosio { namespace cdt {
 
       std::string generate_json_comment() {
          std::stringstream ss;
-         ss << "This file was generated with eosio-abigen.";
+         ss << "This file was generated with leopays-abigen.";
          ss << " DO NOT EDIT ";
          return ss.str(); 
       }
@@ -491,4 +491,4 @@ namespace eosio { namespace cdt {
          std::map<std::string, std::string>    rcs;
          std::set<const clang::Type*>          evaluated;
    };
-}} // ns eosio::cdt
+}}

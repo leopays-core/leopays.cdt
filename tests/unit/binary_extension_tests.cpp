@@ -1,6 +1,6 @@
 /**
  *  @file
- *  @copyright defined in eosio.cdt/LICENSE.txt
+ *  @copyright defined in leopays.cdt/LICENSE.txt
  */
 
 #include <eosio/tester.hpp>
@@ -11,7 +11,7 @@ using std::move;
 
 using eosio::binary_extension;
 
-// Definitions in `eosio.cdt/libraries/eosio/binary_extension.hpp`
+// Definitions in `leopays.cdt/libraries/eosio/binary_extension.hpp`
 EOSIO_TEST_BEGIN(binary_extension_test)
    //// constexpr binary_extension()
    // constexpr bool has_value()const

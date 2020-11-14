@@ -4,7 +4,7 @@ content_title: The eosio::binary_extension type
 
 Let's fully explain what the `eosio::binary_extension` type is, what it does, and why we need it for contract upgrades in certain situations.
 
-You can find the implementation of `eosio::binary_extension` in the `eosio.cdt` repository in file: `eosio.cdt/libraries/eosiolib/core/eosio/binary_extension.hpp`.
+You can find the implementation of `eosio::binary_extension` in the `leopays.cdt` repository in file: `leopays.cdt/libraries/eosiolib/core/eosio/binary_extension.hpp`.
 
 Our primary concern when using this type is when we are adding a new field to a smart contract's data structure that is currently utilized in an `eosio::multi_index` type (AKA a _table_), or when adding a new parameter to an action declaration.
 
@@ -18,7 +18,7 @@ But let's see how the `eosio::binary_extension` type works with a good example.
 
 Take a moment to study this smart contract and its corresponding `.abi`.
 
-This contract not only serves as a good example to the `eosio::binary_extension` type, but can also be used as a gateway for developing smart contracts on the eosio protocol.
+This contract not only serves as a good example to the `eosio::binary_extension` type, but can also be used as a gateway for developing smart contracts on the LeoPays protocol.
 
 **binary_extension_contract.hpp**
 
@@ -165,8 +165,8 @@ using eosio::name;
 
 ```javascript
 {
-    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
-    "version": "eosio::abi/1.1",
+    "____comment": "This file was generated with leopays-abigen. DO NOT EDIT ",
+    "version": "leopays::abi/1.1",
     "types": [],
     "structs": [
         {
@@ -366,54 +366,54 @@ And their corresponding sections in the `.abi` files:
 Now, let's start up a blockchain instance, compile this smart contract, and test it out.
 
 ```
-~/binary_extension_contract $ eosio-cpp binary_extension_contract.cpp -o binary_extension_contract.wasm
+~/binary_extension_contract $ leopays-cpp binary_extension_contract.cpp -o binary_extension_contract.wasm
 ```
 
 ```
-~/binary_extension_contract $ cleos set contract eosio ./
+~/binary_extension_contract $ leopays-cli set contract lpc ./
 ```
 
 ```
 Reading WASM from /Users/john.debord/binary_extension_contract/binary_extension_contract.wasm...
 Publishing contract...
 executed transaction: 6c5c7d869a5be67611869b5f300bc452bc57d258d11755f12ced99c7d7fe154c  4160 bytes  729 us
-#         eosio <= eosio::setcode               "0000000000ea30550000d7600061736d01000000018f011760000060017f0060027f7f0060037f7f7f017f6000017e60067...
-#         eosio <= eosio::setabi                "0000000000ea3055d1020e656f73696f3a3a6162692f312e310006076d6f646966797000020b7072696d6172795f6b65790...
+#         lpc <= lpc::setcode               "0000000000ea30550000d7600061736d01000000018f011760000060017f0060027f7f0060037f7f7f017f6000017e60067...
+#         lpc <= lpc::setabi                "0000000000ea3055d1020e656f73696f3a3a6162692f312e310006076d6f646966797000020b7072696d6172795f6b65790...
 warning: transaction executed locally, but may not be confirmed by the network yet
 ```
 
 Next, let's push some data to our contract.
 
 ```
-~/binary_extension_contract $ cleos push action eosio regpkey '{"primary_key":"eosio.name"}' -p eosio
+~/binary_extension_contract $ leopays-cli push action lpc regpkey '{"primary_key":"lpc.name"}' -p lpc
 ```
 
 ```
 executed transaction: 3c708f10dcbf4412801d901eb82687e82287c2249a29a2f4e746d0116d6795f0  104 bytes  248 us
-#         eosio <= eosio::regpkey               {"primary_key":"eosio.name"}
-[(eosio,regpkey)->eosio]: CONSOLE OUTPUT BEGIN =====================
+#         lpc <= lpc::regpkey               {"primary_key":"lpc.name"}
+[(lpc,regpkey)->lpc]: CONSOLE OUTPUT BEGIN =====================
 `regpkey` executing.
-`_primary_key`: eosio.name not found; registering.
+`_primary_key`: lpc.name not found; registering.
 `regpkey` finished executing.
-[(eosio,regpkey)->eosio]: CONSOLE OUTPUT END   =====================
+[(lpc,regpkey)->lpc]: CONSOLE OUTPUT END   =====================
 warning: transaction executed locally, but may not be confirmed by the network yet
 ```
 
 Finally, let's read back the data we have just written.
 
 ```
-~/binary_extension_contract $ cleos push action eosio printbyp '{"primary_key":"eosio.name"}' -p eosio
+~/binary_extension_contract $ leopays-cli push action lpc printbyp '{"primary_key":"lpc.name"}' -p lpc
 ```
 
 ```
 executed transaction: e9b77d3cfba322a7a3a93970c0c883cb8b67e2072a26d714d46eef9d79b2f55e  104 bytes  227 us
-#         eosio <= eosio::printbyp              {"primary_key":"eosio.name"}
-[(eosio,printbyp)->eosio]: CONSOLE OUTPUT BEGIN =====================
+#         lpc <= lpc::printbyp              {"primary_key":"lpc.name"}
+[(lpc,printbyp)->lpc]: CONSOLE OUTPUT BEGIN =====================
 `printbyp` executing.
-`_primary_key`: eosio.name found; printing.
-{eosio.name, nothin}
+`_primary_key`: lpc.name found; printing.
+{lpc.name, nothin}
 `printbyp` finished executing.
-[(eosio,printbyp)->eosio]: CONSOLE OUTPUT END   =====================
+[(lpc,printbyp)->lpc]: CONSOLE OUTPUT END   =====================
 warning: transaction executed locally, but may not be confirmed by the network yet
 ```
 
@@ -511,24 +511,24 @@ struct [[eosio::table]] structure {
 Next, let's upgrade the contract and try to read from our table and write to our table the original way:
 
 ```
-~/binary_extension_contract $ eosio-cpp binary_extension_contract.cpp -o binary_extension_contract.wasm
+~/binary_extension_contract $ leopays-cpp binary_extension_contract.cpp -o binary_extension_contract.wasm
 ```
 
 ```
-~/binary_extension_contract $ cleos set contract eosio ./
+~/binary_extension_contract $ leopays-cli set contract lpc ./
 ```
 
 ```
 Reading WASM from /Users/john.debord/binary_extension_contract/binary_extension_contract.wasm...
 Publishing contract...
 executed transaction: b8ea485842fa5645e61d35edd97e78858e062409efcd0a4099d69385d9bc6b3e  4408 bytes  664 us
-#         eosio <= eosio::setcode               "0000000000ea30550000a2660061736d01000000018f011760000060017f0060027f7f0060037f7f7f017f6000017e60067...
-#         eosio <= eosio::setabi                "0000000000ea305583030e656f73696f3a3a6162692f312e310006076d6f646966797000020b7072696d6172795f6b65790...
+#         lpc <= lpc::setcode               "0000000000ea30550000a2660061736d01000000018f011760000060017f0060027f7f0060037f7f7f017f6000017e60067...
+#         lpc <= lpc::setabi                "0000000000ea305583030e656f73696f3a3a6162692f312e310006076d6f646966797000020b7072696d6172795f6b65790...
 warning: transaction executed locally, but may not be confirmed by the network yet
 ```
 
 ```
-~/binary_extension_contract $ cleos push action eosio printbyp '{"primary_key":"eosio.name"}' -p eosio
+~/binary_extension_contract $ leopays-cli push action lpc printbyp '{"primary_key":"lpc.name"}' -p lpc
 ```
 
 ```
@@ -540,7 +540,7 @@ assertion failure with message: read
 Whoops! We aren't able to read the data we've previously written to our table!
 
 ```
-~/binary_extension_contract $ cleos push action eosio regpkey '{"primary_key":"eosio.name2"}' -p eosio
+~/binary_extension_contract $ leopays-cli push action lpc regpkey '{"primary_key":"lpc.name2"}' -p lpc
 ```
 
 ```
@@ -667,46 +667,46 @@ Note the `$` after the types now; this indicates that this type is an `eosio::bi
 Now, let's upgrade the contract again and try to read/write from/to our table:
 
 ```
-~/binary_extension_contract $ cleos set contract eosio ./
+~/binary_extension_contract $ leopays-cli set contract lpc ./
 ```
 
 ```
 Reading WASM from /Users/john.debord/binary_extension_contract/binary_extension_contract.wasm...
 Publishing contract...
 executed transaction: 497584d4e43ec114dbef83c134570492893f49eacb555d0cd47d08ea4a3a72f7  4696 bytes  648 us
-#         eosio <= eosio::setcode               "0000000000ea30550000cb6a0061736d01000000018f011760000060017f0060027f7f0060037f7f7f017f6000017e60017...
-#         eosio <= eosio::setabi                "0000000000ea305581030e656f73696f3a3a6162692f312e310006076d6f646966797000020b7072696d6172795f6b65790...
+#         lpc <= lpc::setcode               "0000000000ea30550000cb6a0061736d01000000018f011760000060017f0060027f7f0060037f7f7f017f6000017e60017...
+#         lpc <= lpc::setabi                "0000000000ea305581030e656f73696f3a3a6162692f312e310006076d6f646966797000020b7072696d6172795f6b65790...
 warning: transaction executed locally, but may not be confirmed by the network yet
 ```
 
 ```
-~/binary_extension_contract $ cleos push action eosio printbyp '{"primary_key":"eosio.name"}' -p eosio
+~/binary_extension_contract $ leopays-cli push action lpc printbyp '{"primary_key":"lpc.name"}' -p lpc
 ```
 
 ```
 executed transaction: 6108f3206e1824fe3a1fdcbc2fe733f38dc07ae3d411a1ccf777ecef56ddec97  104 bytes  224 us
-#         eosio <= eosio::printbyp              {"primary_key":"eosio.name"}
-[(eosio,printbyp)->eosio]: CONSOLE OUTPUT BEGIN =====================
+#         lpc <= lpc::printbyp              {"primary_key":"lpc.name"}
+[(lpc,printbyp)->lpc]: CONSOLE OUTPUT BEGIN =====================
 `printbyp` executing.
-`_primary_key`: eosio.name found; printing.
-{eosio.name, nothin}
+`_primary_key`: lpc.name found; printing.
+{lpc.name, nothin}
 `printbyp` finished executing.
-[(eosio,printbyp)->eosio]: CONSOLE OUTPUT END   =====================
+[(lpc,printbyp)->lpc]: CONSOLE OUTPUT END   =====================
 warning: transaction executed locally, but may not be confirmed by the network yet
 ```
 
 ```
-~/binary_extension_contract $ cleos push action eosio regpkey '{"primary_key":"eosio.name2"}' -p eosio
+~/binary_extension_contract $ leopays-cli push action lpc regpkey '{"primary_key":"lpc.name2"}' -p lpc
 ```
 
 ```
 executed transaction: 75a135d1279a9c967078b0ebe337dc0cd58e1ccd07e370a899d9769391509afc  104 bytes  227 us
-#         eosio <= eosio::regpkey               {"primary_key":"eosio.name2"}
-[(eosio,regpkey)->eosio]: CONSOLE OUTPUT BEGIN =====================
+#         lpc <= lpc::regpkey               {"primary_key":"lpc.name2"}
+[(lpc,regpkey)->lpc]: CONSOLE OUTPUT BEGIN =====================
 `regpkey` executing.
-`_primary_key`: eosio.name2 not found; registering.
+`_primary_key`: lpc.name2 not found; registering.
 `regpkey` finished executing.
-[(eosio,regpkey)->eosio]: CONSOLE OUTPUT END   =====================
+[(lpc,regpkey)->lpc]: CONSOLE OUTPUT END   =====================
 warning: transaction executed locally, but may not be confirmed by the network yet
 ```
 

@@ -1,6 +1,6 @@
 /**
  *  @file
- *  @copyright defined in eosio.cdt/LICENSE.txt
+ *  @copyright defined in leopays.cdt/LICENSE.txt
  */
 
 #include <eosio/tester.hpp>
@@ -13,7 +13,7 @@ using std::move;
 using eosio::datastream;
 using eosio::string;
 
-// Definitions found in `eosio.cdt/libraries/eosiolib/core/eosio/string.hpp`
+// Definitions found in `leopays.cdt/libraries/eosiolib/core/eosio/string.hpp`
 EOSIO_TEST_BEGIN(string_test)
    //// template <size_t N>
    //// string(const char (&str)[N])

@@ -22,7 +22,7 @@ class [[eosio::contract]] simple_tests : public contract {
 
       [[eosio::action("test4")]] 
       void test4(name to) {
-         transfer_contract::transfer_action trans("eosio.token"_n, {_self, "active"_n});
+         transfer_contract::transfer_action trans("lpc.token"_n, {_self, "active"_n});
          trans.send(_self, to, asset{100, {"TST", 4}}, "memo");
       }
 
@@ -61,15 +61,15 @@ class [[eosio::contract]] simple_tests : public contract {
          t.send(nm.value, get_self());
       }
 
-      [[eosio::on_notify("eosio.token::transfer")]] 
+      [[eosio::on_notify("lpc.token::transfer")]] 
       void on_transfer(name from, name to, asset quant, std::string memo) {
-         check(get_first_receiver() == "eosio.token"_n, "should be eosio.token");
+         check(get_first_receiver() == "lpc.token"_n, "should be lpc.token");
          print_f("On notify : % % % %", from, to, quant, memo);
       }
 
       [[eosio::on_notify("*::transfer")]] 
       void on_transfer2(name from, name to, asset quant, std::string memo) {
-         check(get_first_receiver() != "eosio.token"_n, "should not be eosio.token");
+         check(get_first_receiver() != "lpc.token"_n, "should not be lpc.token");
          print_f("On notify 2 : % % % %", from, to, quant, memo);
       }
 
@@ -93,5 +93,5 @@ extern "C" void post_dispatch(name self, name original_receiver, name action) {
    print_f("post_dispatch : % % %\n", self, original_receiver, action);
    std::set<name> valid_actions = {"test1"_n, "test2"_n, "test4"_n, "test5"_n};
    check(valid_actions.count(action) == 0, "valid action should have dispatched");
-   check(self == "eosio"_n, "should only be eosio for action failures");
+   check(self == "lpc"_n, "should only be lpc for action failures");
 }

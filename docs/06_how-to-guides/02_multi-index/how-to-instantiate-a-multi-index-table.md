@@ -22,7 +22,7 @@ using namespace eosio;
 +    uint64_t datum;
   };
 ```
-4. Add definition of the primary index for the multi index table. The primary index type must be uint64_t, it must be unique and and it must be named `primary_key()`, if you don't have this the compiler (eosio-cpp) will generate an error saying it can't find the field to use as the primary key:
+4. Add definition of the primary index for the multi index table. The primary index type must be uint64_t, it must be unique and and it must be named `primary_key()`, if you don't have this the compiler (leopays-cpp) will generate an error saying it can't find the field to use as the primary key:
 ```diff
   // the data structure which defines each row of the table
   struct [[eosio::table]] test_table {
@@ -130,4 +130,4 @@ class [[eosio::contract]] multi_index_example : public contract {
 ```
 
 [[info | Full example location]]
-| A full example project demonstrating the instantiation and usage of multi index table can be found [here](https://github.com/EOSIO/eosio.cdt/tree/master/examples/multi_index_example).
+| A full example project demonstrating the instantiation and usage of multi index table can be found [here](https://github.com/leopays-core/leopays.cdt/tree/master/examples/multi_index_example).

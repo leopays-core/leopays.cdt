@@ -41,13 +41,13 @@ static cl::opt<bool> use_old_malloc_opt(
     cl::Hidden,
     cl::cat(LD_CAT));
 static cl::opt<std::string> eosio_imports_opt(
-    "eosio-imports",
-    cl::desc("Set the file for eosio.imports"),
+    "leopays-imports",
+    cl::desc("Set the file for leopays.imports"),
     cl::Hidden,
     cl::cat(LD_CAT));
 static cl::opt<std::string> pp_path_opt(
-    "eosio-pp-dir",
-    cl::desc("Set the directory for eosio.pp"),
+    "leopays-pp-dir",
+    cl::desc("Set the directory for leopays.pp"),
     cl::Hidden,
     cl::cat(LD_CAT));
 static cl::opt<bool> use_rt_opt(
@@ -69,8 +69,8 @@ static cl::opt<bool> fno_stack_first_opt(
       cl::cat(LD_CAT));
 static cl::opt<int> stack_size_opt(
       "stack-size",
-      cl::desc("Specifies the maximum stack size for the contract. Defaults to ${EOSIO_STACK_SIZE} bytes."),
-      cl::init(${EOSIO_STACK_SIZE}),
+      cl::desc("Specifies the maximum stack size for the contract. Defaults to ${LEOPAYS_STACK_SIZE} bytes."),
+      cl::init(${LEOPAYS_STACK_SIZE}),
       cl::cat(LD_CAT));
 static cl::opt<bool> fno_post_pass_opt(
       "fno-post-pass",
@@ -404,24 +404,24 @@ static void GetCompDefaults(std::vector<std::string>& copts) {
          copts.emplace_back("-Xclang");
          copts.emplace_back("-load");
          copts.emplace_back("-Xclang");
-         if (llvm::sys::fs::exists(eosio::cdt::whereami::where()+"/LLVMEosioApply"+eosio_apply_suff))
-            copts.emplace_back(eosio::cdt::whereami::where()+"/LLVMEosioApply"+eosio_apply_suff);
-         else if (llvm::sys::fs::exists(eosio::cdt::whereami::where()+"/../lib/LLVMEosioApply"+eosio_apply_suff))
-            copts.emplace_back(eosio::cdt::whereami::where()+"/../lib/LLVMEosioApply"+eosio_apply_suff);
+         if (llvm::sys::fs::exists(eosio::cdt::whereami::where()+"/LLVMLeoPaysApply"+eosio_apply_suff))
+            copts.emplace_back(eosio::cdt::whereami::where()+"/LLVMLeoPaysApply"+eosio_apply_suff);
+         else if (llvm::sys::fs::exists(eosio::cdt::whereami::where()+"/../lib/LLVMLeoPaysApply"+eosio_apply_suff))
+            copts.emplace_back(eosio::cdt::whereami::where()+"/../lib/LLVMLeoPaysApply"+eosio_apply_suff);
       }
       if (false && fnative_opt) {
          copts.emplace_back("-Xclang");
          copts.emplace_back("-load");
          copts.emplace_back("-Xclang");
-         if (llvm::sys::fs::exists(eosio::cdt::whereami::where()+"/LLVMEosioSoftfloat"+eosio_apply_suff))
-            copts.emplace_back(eosio::cdt::whereami::where()+"/LLVMEosioSoftfloat"+eosio_apply_suff);
-         else if (llvm::sys::fs::exists(eosio::cdt::whereami::where()+"/../lib/LLVMEosioSoftfloat"+eosio_apply_suff))
-            copts.emplace_back(eosio::cdt::whereami::where()+"/../lib/LLVMEosioSoftfloat"+eosio_apply_suff);
+         if (llvm::sys::fs::exists(eosio::cdt::whereami::where()+"/LLVMLeoPaysSoftfloat"+eosio_apply_suff))
+            copts.emplace_back(eosio::cdt::whereami::where()+"/LLVMLeoPaysSoftfloat"+eosio_apply_suff);
+         else if (llvm::sys::fs::exists(eosio::cdt::whereami::where()+"/../lib/LLVMLeoPaysSoftfloat"+eosio_apply_suff))
+            copts.emplace_back(eosio::cdt::whereami::where()+"/../lib/LLVMLeoPaysSoftfloat"+eosio_apply_suff);
       }
-      if (llvm::sys::fs::exists(eosio::cdt::whereami::where()+"/eosio_plugin"+eosio_apply_suff))
-         copts.emplace_back("-fplugin="+eosio::cdt::whereami::where()+"/eosio_plugin"+eosio_apply_suff);
-      else if (llvm::sys::fs::exists(eosio::cdt::whereami::where()+"/../lib/eosio_plugin"+eosio_apply_suff))
-         copts.emplace_back("-fplugin="+eosio::cdt::whereami::where()+"/../lib/eosio_plugin"+eosio_apply_suff);
+      if (llvm::sys::fs::exists(eosio::cdt::whereami::where()+"/leopays_plugin"+eosio_apply_suff))
+         copts.emplace_back("-fplugin="+eosio::cdt::whereami::where()+"/leopays_plugin"+eosio_apply_suff);
+      else if (llvm::sys::fs::exists(eosio::cdt::whereami::where()+"/../lib/leopays_plugin"+eosio_apply_suff))
+         copts.emplace_back("-fplugin="+eosio::cdt::whereami::where()+"/../lib/leopays_plugin"+eosio_apply_suff);
    }
 }
 
@@ -656,7 +656,7 @@ static Options CreateOptions(bool add_defaults=true) {
       copts.emplace_back("-I"+sysroot_opt+"/include/libcxx");
       copts.emplace_back("-I"+sysroot_opt+"/include/libc");
 
-      // only allow capi for native builds and for eosio-cc
+      // only allow capi for native builds and for leopays-cc
       if (fnative_opt) {
         copts.emplace_back("-I"+sysroot_opt+"/include/eosiolib/capi");
         copts.emplace_back("-I"+sysroot_opt+"/include/eosiolib/native");
@@ -790,14 +790,14 @@ static Options CreateOptions(bool add_defaults=true) {
    if (!fnative_opt) {
 #ifndef ONLY_LD
       if (!eosio_imports_opt.empty()) {
-         ldopts.emplace_back("-eosio-imports="+eosio_imports_opt);
+         ldopts.emplace_back("-leopays-imports="+eosio_imports_opt);
       }
 #else
       if (!eosio_imports_opt.empty()) {
          ldopts.emplace_back("--allow-undefined-file="+eosio_imports_opt);
       }
       else {
-         ldopts.emplace_back("--allow-undefined-file="+eosio::cdt::whereami::where()+"/../eosio.imports");
+         ldopts.emplace_back("--allow-undefined-file="+eosio::cdt::whereami::where()+"/../leopays.imports");
       }
 #endif
    }

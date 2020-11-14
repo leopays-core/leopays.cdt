@@ -1,6 +1,6 @@
 /**
  *  @file
- *  @copyright defined in eosio.cdt/LICENSE.txt
+ *  @copyright defined in leopays.cdt/LICENSE.txt
  */
 
 #pragma once
@@ -480,4 +480,4 @@ namespace eosio {
       return ds;
    }
 
-} // namespace eosio
+}

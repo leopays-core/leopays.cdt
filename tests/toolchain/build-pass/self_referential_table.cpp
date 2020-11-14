@@ -1,6 +1,5 @@
 /*
- * Regression test for https://github.com/EOSIO/eosio.cdt/issues/527.
- *
+ * Regression test
  * Verifies that a table can reference its own type.
  */
 

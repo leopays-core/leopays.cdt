@@ -1,6 +1,5 @@
 /*
- * Regression test for https://github.com/EOSIO/eosio.cdt/issues/582
- *
+ * Regression test
  * Verifies that separate cpp and hpp files can be compile without `-o`
  */
 

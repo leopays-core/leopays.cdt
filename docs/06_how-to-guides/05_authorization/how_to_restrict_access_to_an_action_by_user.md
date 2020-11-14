@@ -30,4 +30,4 @@ void hi( name user ) {
 }
 ```
 
-An example of this contract can be found [here](https://github.com/EOSIO/eosio.cdt/blob/master/examples/hello/src/hello.cpp)
+An example of this contract can be found [here](https://github.com/leopays-core/leopays.cdt/blob/master/examples/hello/src/hello.cpp)

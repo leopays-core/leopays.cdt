@@ -168,4 +168,4 @@ namespace eosio {
     */
    std::vector<name> get_active_producers();
 
-} /// namespace eosio
+}

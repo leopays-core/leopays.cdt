@@ -1,6 +1,6 @@
 /**
  *  @file
- *  @copyright defined in eosio.cdt/LICENSE.txt
+ *  @copyright defined in leopays.cdt/LICENSE.txt
  */
 
 #include <eosio/tester.hpp>
@@ -9,7 +9,7 @@
 using eosio::public_key;
 using eosio::signature;
 
-// Definitions in `eosio.cdt/libraries/eosio/crypto.hpp`
+// Definitions in `leopays.cdt/libraries/eosio/crypto.hpp`
 EOSIO_TEST_BEGIN(public_key_type_test)
    // -----------------------------------------------------
    // bool operator==(const public_key&, const public_key&)
@@ -22,7 +22,7 @@ EOSIO_TEST_BEGIN(public_key_type_test)
    CHECK_EQUAL( (public_key(std::in_place_index<0>, std::array<char, 33>{1}) != public_key(std::in_place_index<0>, std::array<char, 33>{})), true  )
 EOSIO_TEST_END
 
-// Definitions in `eosio.cdt/libraries/eosio/crypto.hpp`
+// Definitions in `leopays.cdt/libraries/eosio/crypto.hpp`
 EOSIO_TEST_BEGIN(signature_type_test)
    // ---------------------------------------------------
    // bool operator==(const signature&, const signature&)

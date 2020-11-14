@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  leopays_cdt:
+    image: leopays/leopays.cdt:latest
+    command: leopays-cpp -abigen /data/src/hello.cpp -o /data/build/hello.wasm -I /data/include
+    hostname: leopays_cdt
+    volumes:
+      - leopays-cdt-data-volume:/data
+      #- ./data:/data
+
+volumes:
+  leopays-cdt-data-volume:
+   external: true

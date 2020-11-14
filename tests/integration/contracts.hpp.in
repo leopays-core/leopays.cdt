@@ -18,4 +18,4 @@ struct contracts {
 
 };
  
-}} //ns eosio::testing
+}}

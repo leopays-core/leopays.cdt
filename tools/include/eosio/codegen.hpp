@@ -58,7 +58,7 @@ namespace eosio { namespace cdt {
 
    struct codegen_exception : public std::exception {
       virtual const char* what() const throw() {
-         return "eosio.codegen fatal error";
+         return "leopays.codegen fatal error";
       }
    };
 
@@ -294,7 +294,7 @@ namespace eosio { namespace cdt {
             static std::set<std::string> _notify_set; //used for validations
             if (decl->isEosioAction()) {
                name = generation_utils::get_action_name(decl);
-               validate_name(name, [&]() {emitError(*ci, decl->getLocation(), "action not a valid eosio name");});
+               validate_name(name, [&]() {emitError(*ci, decl->getLocation(), "action not a valid LeoPays name");});
                if (!_action_set.count(name))
                   _action_set.insert(name);
                else {
@@ -447,4 +447,4 @@ namespace eosio { namespace cdt {
          }
    };
 
-}} // ns eosio::cdt
+}}

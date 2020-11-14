@@ -1,6 +1,6 @@
 /**
  *  @file
- *  @copyright defined in eosio.cdt/LICENSE.txt
+ *  @copyright defined in leopays.cdt/LICENSE.txt
  */
 
 #include <string>
@@ -20,7 +20,7 @@ static constexpr int64_t asset_mask{(1LL << 62) - 1};
 static constexpr int64_t asset_min{-asset_mask}; // -4611686018427387903
 static constexpr int64_t asset_max{ asset_mask}; //  4611686018427387903
 
-// Definitions in `eosio.cdt/libraries/eosio/asset.hpp`
+// Definitions in `leopays.cdt/libraries/eosio/asset.hpp`
 EOSIO_TEST_BEGIN(asset_type_test)
    static constexpr symbol s0{"A", 0};
    static constexpr symbol s1{"Z", 0};
@@ -356,13 +356,13 @@ EOSIO_TEST_BEGIN(asset_type_test)
    CHECK_EQUAL( ( asset{1LL, sym_no_prec} >= asset{1LL, sym_no_prec} ), true )
 EOSIO_TEST_END
 
-// Definitions in `eosio.cdt/libraries/eosio/asset.hpp`
+// Definitions in `leopays.cdt/libraries/eosio/asset.hpp`
 EOSIO_TEST_BEGIN(extended_asset_type_test)
    static constexpr symbol sym_no_prec{"SYMBOLL",0};
    static constexpr symbol sym_prec{"SYMBOLL",63};
 
-   static constexpr extended_symbol ext_sym_no_prec{sym_no_prec, name{"eosioaccountj"}};
-   static constexpr extended_symbol ext_sym_prec{sym_prec, name{"eosioaccountj"}};
+   static constexpr extended_symbol ext_sym_no_prec{sym_no_prec, name{"vctrmaccountj"}};
+   static constexpr extended_symbol ext_sym_prec{sym_prec, name{"vctrmaccountj"}};
 
    static const asset asset_no_prec{0LL, sym_no_prec};
    static const asset asset_prec{0LL, sym_prec};
@@ -373,11 +373,11 @@ EOSIO_TEST_BEGIN(extended_asset_type_test)
 
    //// extended_asset(int64_t, extended_symbol)
    CHECK_EQUAL( (extended_asset{{},ext_sym_no_prec}.quantity), (asset{0LL, sym_no_prec}) )
-   CHECK_EQUAL( (extended_asset{{},ext_sym_no_prec}.contract), (name{"eosioaccountj"}) )
+   CHECK_EQUAL( (extended_asset{{},ext_sym_no_prec}.contract), (name{"vctrmaccountj"}) )
 
    //// extended_asset(asset, name)
-   CHECK_EQUAL( (extended_asset{asset_no_prec, name{"eosioaccountj"}}.quantity), (asset{ 0LL, sym_no_prec}) )
-   CHECK_EQUAL( (extended_asset{asset_no_prec, name{"eosioaccountj"}}.contract), (name{"eosioaccountj"}) )
+   CHECK_EQUAL( (extended_asset{asset_no_prec, name{"vctrmaccountj"}}.quantity), (asset{ 0LL, sym_no_prec}) )
+   CHECK_EQUAL( (extended_asset{asset_no_prec, name{"vctrmaccountj"}}.contract), (name{"vctrmaccountj"}) )
 
    // ------------------------------------------
    // extended_symbol get_extended_symbol()const
@@ -448,7 +448,7 @@ EOSIO_TEST_BEGIN(extended_asset_type_test)
 
    CHECK_ASSERT( "type mismatch", (
       [&]() {
-         extended_asset{asset_no_prec, name{"eosioaccountj"}} + extended_asset{asset_no_prec, name{"jtnuoccaoisoe"}};
+         extended_asset{asset_no_prec, name{"vctrmaccountj"}} + extended_asset{asset_no_prec, name{"jtnuoccaoisoe"}};
       })
    )
 
@@ -461,7 +461,7 @@ EOSIO_TEST_BEGIN(extended_asset_type_test)
 
    CHECK_ASSERT( "type mismatch", (
       [&]() {
-         temp += extended_asset{asset_no_prec, name{"eosioaccountj"}};
+         temp += extended_asset{asset_no_prec, name{"vctrmaccountj"}};
       })
    )
 
@@ -474,7 +474,7 @@ EOSIO_TEST_BEGIN(extended_asset_type_test)
 
    CHECK_ASSERT( "type mismatch", (
       [&]() {
-         extended_asset{asset_no_prec, name{"eosioaccountj"}} - extended_asset{asset_no_prec, name{"jtnuoccaoisoe"}};
+         extended_asset{asset_no_prec, name{"vctrmaccountj"}} - extended_asset{asset_no_prec, name{"jtnuoccaoisoe"}};
       })
    )
 
@@ -498,16 +498,16 @@ EOSIO_TEST_BEGIN(extended_asset_type_test)
 
    // --------------------------------------------------------------------
    // friend bool operator!=(const extended_asset&, const extended_asset&)
-   CHECK_EQUAL( (extended_asset{asset_no_prec, name{"eosioaccountj"}} != extended_asset{asset_no_prec, name{"jtnuoccaoisoe"}}), true )
+   CHECK_EQUAL( (extended_asset{asset_no_prec, name{"vctrmaccountj"}} != extended_asset{asset_no_prec, name{"jtnuoccaoisoe"}}), true )
    CHECK_EQUAL( (extended_asset{asset{1LL, sym_no_prec}, {}} != extended_asset{asset{-1LL, sym_no_prec}, {}}), true )
-   CHECK_EQUAL( (extended_asset{asset{1LL, sym_no_prec}, {}} != extended_asset{asset{ 0LL, sym_no_prec}, name{"eosioaccountj"}}), true )
+   CHECK_EQUAL( (extended_asset{asset{1LL, sym_no_prec}, {}} != extended_asset{asset{ 0LL, sym_no_prec}, name{"vctrmaccountj"}}), true )
 
    // -------------------------------------------------------------------
    // friend bool operator<(const extended_asset&, const extended_asset&)
    CHECK_EQUAL( (extended_asset{asset_no_prec, name{}} < extended_asset{asset{ 1LL, sym_no_prec}, {}}), true )
    CHECK_ASSERT( "type mismatch", (
       [&]() {
-         bool b{extended_asset{{}, name{}} < extended_asset{{}, name{"eosioaccountj"}}};
+         bool b{extended_asset{{}, name{}} < extended_asset{{}, name{"vctrmaccountj"}}};
          return b;
       })
    )
@@ -517,7 +517,7 @@ EOSIO_TEST_BEGIN(extended_asset_type_test)
    CHECK_EQUAL( (extended_asset{asset_no_prec, name{}} <= extended_asset{asset{ 1LL, sym_no_prec}, {}}), true );
    CHECK_ASSERT( "type mismatch", (
       [&]() {
-         bool b{extended_asset{{}, name{}} <= extended_asset{{}, name{"eosioaccountj"}}};
+         bool b{extended_asset{{}, name{}} <= extended_asset{{}, name{"vctrmaccountj"}}};
          return b;
       })
    )
@@ -527,7 +527,7 @@ EOSIO_TEST_BEGIN(extended_asset_type_test)
    CHECK_EQUAL( (extended_asset{asset{ 1LL, sym_no_prec}, {}} >= extended_asset{asset_no_prec, name{}}), true );
    CHECK_ASSERT( "type mismatch", (
       [&]() {
-         bool b{extended_asset{{}, name{}} >= extended_asset{{}, name{"eosioaccountj"}}};
+         bool b{extended_asset{{}, name{}} >= extended_asset{{}, name{"vctrmaccountj"}}};
          return b;
       })
    )

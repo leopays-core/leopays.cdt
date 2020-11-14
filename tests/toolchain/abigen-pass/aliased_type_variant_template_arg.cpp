@@ -1,6 +1,5 @@
 /*
- * Regression test for https://github.com/EOSIO/eosio.cdt/issues/602.
- *
+ * Regression test
  * Verifies that an aliased type can be used as a variant template arg.
  */
 

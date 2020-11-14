@@ -1,6 +1,6 @@
 /**
  *  @file
- *  @copyright defined in eos/LICENSE
+ *  @copyright defined in leopays/LICENSE
  */
 #pragma once
 
@@ -125,4 +125,4 @@ namespace eosio {
          internal_use_do_not_use::eosio_assert_code(false, code);
       }
    }
-} // namespace eosio
+}
